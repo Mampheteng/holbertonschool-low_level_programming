@@ -39,7 +39,15 @@ int main(void)
                         scanf("%d", &b);
                         printf("Result: %d\n", a - b);
                 }
-		else if (choice >= 3 && choice <= 4)
+		else if (choice == 3)
+                {
+                        printf("A: ");
+                        scanf("%d", &a);
+                        printf("B: ");
+                        scanf("%d", &b);
+                        printf("Result: %d\n", a * b);
+                }
+		else if (choice >= 4 && choice <= 6)
 		{
 		}
 		else

@@ -7,7 +7,7 @@
  *
  * Return: pointer to the copied string, or NULL if it fails
  */
-char *copy_string(char *str)
+static char *copy_string(char *str)
 {
 	char *copy;
 	unsigned int i, len;

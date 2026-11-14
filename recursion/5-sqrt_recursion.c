@@ -7,7 +7,7 @@
  *
  * Return: natural square root or -1
  */
-static int find_sqrt(int n, int guess)
+int find_sqrt(int n, int guess)
 {
 	if (guess > n / guess)
 		return (-1);
@@ -34,4 +34,5 @@ int _sqrt_recursion(int n)
 
 	return (find_sqrt(n, 1));
 }
+
 

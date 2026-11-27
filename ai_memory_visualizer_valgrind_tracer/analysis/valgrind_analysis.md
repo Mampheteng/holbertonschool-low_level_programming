@@ -65,6 +65,8 @@ The `person_new()` function allocates two separate objects for each person:
 
 For Alice, the name allocation is 6 bytes: five characters plus the terminating null character.
 
+The `person_new()` function allocates the `Person` structure and its name string. The returned `Person` pointer gives the caller responsibility for managing the allocated objects. Before releasing a `Person` structure, its separately allocated `name` must also be freed. In this example, Bob's name and structure are both released, but Alice's name is not. Freeing Alice's structure loses the only remaining reference to her allocated name.
+
 ### Exact source of the error
 
 The name is allocated at:

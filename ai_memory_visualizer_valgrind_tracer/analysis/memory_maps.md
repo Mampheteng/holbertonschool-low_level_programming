@@ -1,4 +1,3 @@
-
 # Memory Maps: Stack and Aliasing Examples
 
 ## 1. Stack Example
@@ -90,6 +89,10 @@ The allocated values are:
 | 3 | 33 |
 | 4 | 44 |
 
+The `make_numbers()` function creates the heap allocation and returns its address to `main()`. After the function returns, the caller is responsible for managing the allocation and eventually releasing it with `free()`.
+
+The pointer `a` initially holds the returned address. When `b = a` executes, `b` becomes another reference to the same allocation. This does not create a second owner or a second allocation. The allocated block must be freed exactly once, and neither pointer may be used to access it after it has been freed.
+
 ### Pointer aliasing
 
 In `main()`, the program executes:
@@ -122,6 +125,8 @@ The program then performs three invalid operations:
 1. Reads `b[2]` after the memory has been freed.
 2. Writes `1234` to `b[3]` after the memory has been freed.
 3. Reads `b[3]` after the memory has been freed.
+
+The allocated array remains valid from its successful allocation in `make_numbers()` until `free(a)` releases it. After that point, the allocation's lifetime has ended, and both `a` and `b` are dangling pointers if they retain the old address.
 
 These are use-after-free errors.
 
